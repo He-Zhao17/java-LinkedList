@@ -14,7 +14,7 @@ In this Lab, we'll be implementing a Linked List, using the starter code provide
 
 4. (5 points) Now let's subclass LinkedList to make a SortedLinkedList. It will keep all items in sorted order using insertionSort. You should implement the Comparable interface on the Node class.
 
-5. (5 points) Implement the List interface for your LinkedList. This will require adding an Iterator to your LinkedList, as we did in the previous lab.
+<del>5. (5 points) Implement the List interface for your LinkedList. This will require adding an Iterator to your LinkedList, as we did in the previous lab.</del>
 
 6. (5 points) Now create Stack and Queue interfaces that your LinkedList implements. Stack should implement push() and pop(), and Queue should implement enqueue() and dequeue();
 
