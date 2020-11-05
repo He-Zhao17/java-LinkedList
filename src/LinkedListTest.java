@@ -9,9 +9,8 @@ public class LinkedListTest {
         test.addInFront(0,temp);
         test.addInFront(1,temp2);
         test.print();
-        test.remove(0);
+        test.remove(1);
         test.print();
-        System.out.println(test.length());
         test.remove(0);
         test.print();
         //Test String
@@ -25,6 +24,16 @@ public class LinkedListTest {
         test.print();
         test.remove(0);
         test.print();
+
+        test = new LinkedList();
+        temp = test.new Node('o');
+        temp2 = test.new Node('k');
+        test.addInFront(0,temp);
+        test.addInFront(0,temp2);
+        LinkedList.SortedLinkedList sortedtest = test.new SortedLinkedList(test);
+        sortedtest.sort().print();
+
+
 
 
     }

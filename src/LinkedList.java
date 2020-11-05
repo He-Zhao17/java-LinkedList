@@ -182,7 +182,7 @@ public class LinkedList<Type> {
             addnode.setNext(LinkedList.this.tail);
             LinkedList.this.tail.setTail(LinkedList.this.tail);
             addnode.setTail(LinkedList.this.tail);
-        } else if (index < 0 || index > length() - 1) {
+        } else if (index >= 0 && index <= length() - 1) {
             Node temp = get(index);
             addnode.setPrev(temp.getPrev());
             temp.getPrev().setNext(addnode);
