@@ -26,12 +26,14 @@ public class LinkedListTest {
         test.print();
 
         test = new LinkedList();
-        temp = test.new Node('o');
-        temp2 = test.new Node('k');
+        temp = test.new Node('k');
+        temp2 = test.new Node('1');
         test.addInFront(0,temp);
-        test.addInFront(0,temp2);
+        test.addInFront(1,temp2);
         LinkedList.SortedLinkedList sortedtest = test.new SortedLinkedList(test);
         sortedtest.sort().print();
+        test.pop();
+        test.print();
 
 
 

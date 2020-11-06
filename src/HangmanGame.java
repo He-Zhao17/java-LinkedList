@@ -80,7 +80,9 @@ public class HangmanGame {
                 newSolution.setCharAt(i, '*');
             }
         }
-        sb.setPartialSolution(newSolution.toString());
+        for (int j = 0; j < newSolution.length(); j++) {
+            sb.getPartialSolution().enqueue(newSolution.charAt(j));
+        }
     }
 
     public boolean checkInput(String input) {
@@ -119,10 +121,10 @@ public class HangmanGame {
                 continue;
             }
             if (checkGuess(input.charAt(0))) {
-                sb.setCorrectGuesses(sb.getCorrectGuesses() + " " + input);
+                sb.getCorrectGuesses().enqueue(input);
                 updatePartialSolution();
             } else {
-                sb.setIncorrectGuesses(sb.getIncorrectGuesses() + " " + input);
+                sb.getIncorrectGuesses().enqueue(input);
                 guessCount++;
             }
             sb.display();

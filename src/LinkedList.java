@@ -1,12 +1,43 @@
-import javax.swing.*;
-import java.util.NoSuchElementException;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import org.w3c.dom.Node;
 
-public class LinkedList<Type> {
+public class LinkedList<Type> implements LinkedListStack, LinkedListQueue{
 
     private Node head;
     private Node tail;
+
+
+    @Override
+    public void enqueue(Object a) {
+        if (a instanceof Node) {
+            addInFront(length(), (Node)a);
+        } else {
+            System.out.println("Incorrect type. Must be Node.");
+        }
+    }
+
+    @Override
+    public Node dequeue() {
+        Node outn = new Node(get(0).getData());
+        remove(0);
+        return outn;
+    }
+
+    @Override
+    public void push(Object a) {
+        if (a instanceof Node) {
+            addInFront(length(), (Node)a);
+        } else {
+            System.out.println("Incorrect type. Must be Node.");
+        }
+    }
+
+    @Override
+    public Node pop() {
+        Node outn = new Node(get(length() - 1).getData());
+        remove(length() - 1);
+        return outn;
+    }
+
 
     class Node<Type> implements Comparable{
         Type data;
@@ -204,7 +235,7 @@ public class LinkedList<Type> {
     public void print() {
         StringBuffer str = new StringBuffer();
         if (length() == 0) {
-            System.out.println("Empty linkedlist.");
+            System.out.println("");
         } else {
             Node s = head.next;
             while(s.getNext() != null) {
@@ -272,6 +303,23 @@ public class LinkedList<Type> {
         }
         return false;
     }
+
+    public String toString() {
+        StringBuffer str = new StringBuffer();
+        if (length() == 0) {
+            System.out.println("");
+        } else {
+            Node s = head.next;
+            while(s.getNext() != null) {
+                str.append(s.data);
+                s = s.next;
+            }
+            String str1 = str.substring(0, str.length());
+            return str1;
+        }
+        return "Error.";
+    }
+
 
 
 
