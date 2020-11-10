@@ -1,4 +1,6 @@
-public interface LinkedListQueue {
-    void enqueue(Object a);
-    LinkedList.Node dequeue();
+import java.lang.reflect.Type;
+
+public interface LinkedListQueue<T> {
+    void enqueue(T a);
+    T dequeue();
 }

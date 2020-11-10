@@ -20,7 +20,7 @@ public class HangmanGame {
 
         nGuesses = n;
 
-        File file = new File("hangmanWords");
+        File file = new File("./src/hangmanWords.txt");
 
         ArrayList<String> wordsList = new ArrayList<>();
         try {
@@ -80,6 +80,8 @@ public class HangmanGame {
                 newSolution.setCharAt(i, '*');
             }
         }
+        LinkedList<Character> temp = new LinkedList<Character>();
+        sb.setPartialSolution(temp);
         for (int j = 0; j < newSolution.length(); j++) {
             sb.getPartialSolution().enqueue(newSolution.charAt(j));
         }
@@ -96,10 +98,10 @@ public class HangmanGame {
         if (!Character.isAlphabetic(ch)) {
             return false;
         }
-        if (sb.getIncorrectGuesses().contains(input)) {
+        if (sb.getIncorrectGuesses().toString().contains(input)) {
             return false;
         }
-        if (sb.getCorrectGuesses().contains(input)) {
+        if (sb.getCorrectGuesses().toString().contains(input)) {
             return false;
         }
         return true;
@@ -121,10 +123,10 @@ public class HangmanGame {
                 continue;
             }
             if (checkGuess(input.charAt(0))) {
-                sb.getCorrectGuesses().enqueue(input);
+                sb.getCorrectGuesses().enqueue(input.charAt(0));
                 updatePartialSolution();
             } else {
-                sb.getIncorrectGuesses().enqueue(input);
+                sb.getIncorrectGuesses().enqueue(input.charAt(0));
                 guessCount++;
             }
             sb.display();

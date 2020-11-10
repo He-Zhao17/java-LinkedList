@@ -1,44 +1,44 @@
 public class Scoreboard {
-    private LinkedList correctGuesses;
-    private LinkedList incorrectGuesses;
-    private LinkedList partialSolution;
+    private LinkedList<Character> correctGuesses;
+    private LinkedList<Character> incorrectGuesses;
+    private LinkedList<Character> partialSolution;
 
     public Scoreboard() {
-        correctGuesses = new LinkedList();
-        incorrectGuesses = new LinkedList();
-        partialSolution = new LinkedList();
+        correctGuesses = new LinkedList<Character>();
+        incorrectGuesses = new LinkedList<Character>();
+        partialSolution = new LinkedList<Character>();
     }
     public Scoreboard(String initialGuesses, String initialSolution) {
-        LinkedList.Node temp = correctGuesses.new Node(initialGuesses.charAt(0));
+        correctGuesses= new LinkedList<Character>();
+        partialSolution = new LinkedList<Character>();
         for (int i = 0; i < initialGuesses.length(); i++) {
-            temp = correctGuesses.new Node(initialGuesses.charAt(i));
-            correctGuesses.enqueue(temp);
+            correctGuesses.enqueue(initialGuesses.charAt(i));
         }
         for (int i = 0; i < initialSolution.length(); i++) {
-            temp = partialSolution.new Node(initialSolution.charAt(i));
-            partialSolution.enqueue(temp);
+            partialSolution.enqueue(initialSolution.charAt(i));
         }
+        incorrectGuesses = new LinkedList<Character>();
     }
 
-    public LinkedList getCorrectGuesses() {
+    public LinkedList<Character> getCorrectGuesses() {
         return correctGuesses;
     }
 
-    public LinkedList getIncorrectGuesses() {
+    public LinkedList<Character> getIncorrectGuesses() {
         return incorrectGuesses;
     }
 
-    public LinkedList getPartialSolution() {
+    public LinkedList<Character> getPartialSolution() {
         return partialSolution;
     }
 
-    public void setCorrectGuesses(LinkedList guesses) {
+    public void setCorrectGuesses(LinkedList<Character> guesses) {
         correctGuesses = guesses;
     }
-    public void setIncorrectGuesses(LinkedList guesses) {
+    public void setIncorrectGuesses(LinkedList<Character> guesses) {
         incorrectGuesses = guesses;
     }
-    public void setPartialSolution(LinkedList psol) {
+    public void setPartialSolution(LinkedList<Character> psol) {
         partialSolution = psol;
     }
 

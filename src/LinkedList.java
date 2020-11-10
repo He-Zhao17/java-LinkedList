@@ -1,41 +1,36 @@
 import org.w3c.dom.Node;
 
-public class LinkedList<Type> implements LinkedListStack, LinkedListQueue{
+import java.lang.reflect.Type;
+
+public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<Type>{
 
     private Node head;
     private Node tail;
 
-
     @Override
-    public void enqueue(Object a) {
-        if (a instanceof Node) {
-            addInFront(length(), (Node)a);
-        } else {
-            System.out.println("Incorrect type. Must be Node.");
-        }
+    public void enqueue(Type a) {
+        Node<Type> temp = new Node<>(a);
+        addInFront(length(), temp);
     }
 
     @Override
-    public Node dequeue() {
-        Node outn = new Node(get(0).getData());
+    public Type dequeue() {
+        Node<Type> temp = get(0);
         remove(0);
-        return outn;
+        return temp.data;
     }
 
     @Override
-    public void push(Object a) {
-        if (a instanceof Node) {
-            addInFront(length(), (Node)a);
-        } else {
-            System.out.println("Incorrect type. Must be Node.");
-        }
+    public void push(Type a) {
+        Node<Type> temp = new Node<>(a);
+        addInFront(0, temp);
     }
 
     @Override
-    public Node pop() {
-        Node outn = new Node(get(length() - 1).getData());
-        remove(length() - 1);
-        return outn;
+    public Type pop() {
+        Node<Type> temp = get(0);
+        remove(0);
+        return temp.data;
     }
 
 
@@ -295,6 +290,8 @@ public class LinkedList<Type> implements LinkedListStack, LinkedListQueue{
         }
     }
 
+
+
     public boolean contains(Type e) {
         for (int i = 0; i < length(); i++) {
             if ((get(i).getData().getClass() == e.getClass()) || get(i).getData() == e) {
@@ -314,10 +311,10 @@ public class LinkedList<Type> implements LinkedListStack, LinkedListQueue{
                 str.append(s.data);
                 s = s.next;
             }
-            String str1 = str.substring(0, str.length());
+            String str1 = str.toString();
             return str1;
         }
-        return "Error.";
+        return "";
     }
 
 
