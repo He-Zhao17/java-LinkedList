@@ -4,7 +4,7 @@ import java.lang.reflect.Type;
 
 public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<Type>{
 
-    private Node head;
+    private Node head; // cb - should be Node<Type>
     private Node tail;
 
     @Override
@@ -70,7 +70,7 @@ public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<
             return data;
         }
 
-        Boolean equals(Node e) {
+        Boolean equals(Node e) {                // cb - no need to check types - just see if the data.equals(e.data)
             if (e.getData().getClass() == data) {
                 if (data instanceof Integer || data instanceof Double || data instanceof Character || data instanceof Long) {
                     if (data == e.getData()) {
@@ -91,7 +91,8 @@ public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<
         }
 
         @Override
-        public int compareTo(Object o) {
+        public int compareTo(Object o) {        // cb - same comment as above. If you have generics set up correctly, you don't need to
+                                                // do all of this.
             if (o instanceof Node) {
                 Node a = (Node)o;
                 if (a.getData() instanceof Integer || a.getData() instanceof Double || a.getData() instanceof Long) {
@@ -158,7 +159,7 @@ public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<
         }
     }
 
-    class SortedLinkedList {
+    class SortedLinkedList {        // cb - this should be in a separate file. -1
         LinkedList unsorted;
 
         void setUnsorted(LinkedList a) {
@@ -172,7 +173,7 @@ public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<
             unsorted = a;
         }
 
-        LinkedList sort() {
+        LinkedList sort() {     // why return a LinkedList? also not parameterized.
             if (unsorted.length() == 0 || unsorted.length() == 1) {
                 return unsorted;
             } else {
@@ -190,7 +191,7 @@ public class LinkedList<Type> implements LinkedListStack<Type>, LinkedListQueue<
         }
     }
 
-    public LinkedList() {
+    public LinkedList() {           // cb - Why is this here? Not generic.
         head = null;
         tail = null;
     }
